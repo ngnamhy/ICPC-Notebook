@@ -1,31 +1,31 @@
 // === DSU START ===
 // 1-index
 struct DSU { 
-        int n; 
-        vector<int> par, sz; 
+    int n; 
+    vector<int> par, sz; 
 
-        DSU(int n): n(n) { 
-                par = sz = vector<int> (n + 1); 
-                fill(all(sz), 1LL); 
-                iota(all(par), 0LL); 
-        }
-        int find(int v) { 
-                while (v != par[v]) v = par[v] = par[par[v]]; 
-                return v; 
-        }
+    DSU(int n): n(n) { 
+            par = sz = vector<int> (n + 1); 
+            ranges::fill(sz, 1); 
+            ranges::iota(par, 0); 
+    }
+    int find(int v) { 
+            while (v != par[v]) v = par[v] = par[par[v]]; 
+            return v; 
+    }
 
-        bool join(int u, int v) { 
-                u = find(u); 
-                v = find(v); 
-                if (u == v) return false; 
-                if (sz[u] < sz[v]) swap(u, v); 
-                sz[u] += sz[v]; 
-                par[v] = u; 
-                return true; 
-        }
+    bool join(int u, int v) { 
+            u = find(u); 
+            v = find(v); 
+            if (u == v) return false; 
+            if (sz[u] < sz[v]) swap(u, v); 
+            sz[u] += sz[v]; 
+            par[v] = u; 
+            return true; 
+    }
 
-        int same(int u, int v) { 
-                return find(u) == find(v); 
-        }
+    int same(int u, int v) { 
+            return find(u) == find(v); 
+    }
 };
 // === DSU END ===
