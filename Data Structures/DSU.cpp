@@ -1,3 +1,5 @@
+// === DSU START ===
+// 1-index
 struct DSU { 
         int n; 
         vector<int> par, sz; 
@@ -26,4 +28,4 @@ struct DSU {
                 return find(u) == find(v); 
         }
 };
-
+// === DSU END ===
