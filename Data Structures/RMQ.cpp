@@ -1,3 +1,4 @@
+// === RMQ START ===
 // 0-indexed
 template<typename T>
 struct RMQ { 
@@ -22,3 +23,4 @@ struct RMQ {
                 return f(st[l][len], st[r - (1 << len) + 1][len]); 
         }
 }; 
+// === RMQ END ===
