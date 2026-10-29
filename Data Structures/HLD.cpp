@@ -1,9 +1,13 @@
+// === HLD START ===
+// Author: ngnamhy 
 struct HLD { 
         int n; 
         int root; 
         vector<int> sz, par, dep, top, in, out, seq; 
         vector<vector<int>> adj; 
         int curdfs = 0; 
+
+
         HLD(int n): n(n) { 
                 par = sz = dep = top = in = out = seq = vector<int> (n + 1); 
                 adj.resize(n + 1); 
@@ -20,7 +24,7 @@ struct HLD {
                 dfshld(root); 
         }
         void dfssz(int u) { 
-                if (u != root) adj[u].erase(find(all(adj[u]), par[u])); 
+                if (u != root) adj[u].erase(ranges::find(adj[u], par[u])); 
                 sz[u] = 1; 
                 for (int &v : adj[u]) { 
                         dep[v] = dep[u] + 1; 
@@ -50,3 +54,4 @@ struct HLD {
                 return in[u] <= in[v] && out[v] <= out[u]; 
         }
 };
+/// === HLD END ===
